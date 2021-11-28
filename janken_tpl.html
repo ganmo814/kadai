@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+
+<header>
+  <h1>じゃんけんゲーム</h1>
+</header>
+
+<main>
+  <section class="display">
+    <div class="roulette">
+        <div class="item" id="roulette3"><img src="roulette3.png" alt="roulette部品"></div>
+        <div class="item" id="roulette4"><img src="roulette4.png" alt="roulette部品"></div>
+        <div class="item" id="roulette5"><img src="roulette5.png" alt="roulette部品"></div>
+        <div class="item" id="roulette6"><img src="roulette6.png" alt="roulette部品"></div>
+        <div class="item" id="roulette7"><img src="roulette7.png" alt="roulette部品"></div>
+        <div class="item" id="roulette8"><img src="roulette8.png" alt="roulette部品"></div>
+        <div class="item" id="roulette1"><img src="roulette1.png" alt="roulette部品"></div>
+        <div class="item" id="roulette2"><img src="roulette2.png" alt="roulette部品"></div>
+    </div>
+  </section>
+
+  <p id="comp_hand"></p>
+  
+  <div id="judgement"></div>
+
+  <ul>
+    <li><button type="button" id="gu_btn" class="btn"><img src="gu.png" art="グー画像" height="150"></button></li>
+    <li><button type="button" id="cho_btn" class="btn"><img src="cho.png" art="チョキ画像" height="150"></button></li>
+    <li><button type="button" id="par_btn" class="btn"><img src="par.png" art="パー画像" height="150"></button></li>
+  </ul>
+
+</main>
+
+<footer></footer>
+<script>
+//じゃんけん用のSCRIPTを書いてください
+
+//自分の出し手を選択した際のアクション
+  let my_hand = 0;
+  let comp_hand = 0;
+
+  $("#gu_btn").on("click", function () { 
+    my_hand = 0;
+    choose_comp_hand();
+    judgement_result();
+    // console.log(my_hand);
+  });
+  $("#cho_btn").on("click", function () { 
+    my_hand = 1;
+    choose_comp_hand();
+    judgement_result();
+    // console.log(my_hand);
+  });
+  $("#par_btn").on("click", function () { 
+    my_hand = 2;
+    choose_comp_hand();
+    judgement_result();
+    // console.log(my_hand);
+  });
+
+  function choose_comp_hand(){
+    // 相手の出し手の表示処理
+    comp_hand = Math.floor(Math.random()*3);
+    let view ="";   
+    if(comp_hand == 0){
+      view = '<img src="gu.png" height="500" width="500">';
+    } else if(comp_hand == 1) {
+        view = '<img src="cho.png" height="500" width="500">';
+    } else if(comp_hand == 2) {
+        view = '<img src="par.png" height="500" width="500">';
+    }    
+    // console.log(comp_hand);
+    $("#comp_hand").html(view);
+  }
+
+  function judgement_result(){
+    // 結果判定
+    let result ="";
+    if(my_hand == comp_hand){
+        result ="あいこ";
+    } else if((my_hand + 1) % 3 == comp_hand) {
+        result ="勝ち";
+    } else {
+        result ="負け";
+    }   
+    $("#judgement").html(result)
+    // console.log(result);
+  }
+
+  $(function(){
+    let item_num = $('div.item').length;
+    let deg = 360.0/item_num;
+    let red = (deg*Math.PI/180.0);
+    let circle_r = $("div.item").width() * 2.4;
+    $('div.item').each(function(i, elem) {
+        let x = Math.cos(red * i) * circle_r + circle_r;
+        let y = Math.sin(red * i) * circle_r + circle_r;
+        $(elem).css('left', x);
+        $(elem).css('top', y);
+    });
+  });
+
+
+</script>
+</body>
+</html>
