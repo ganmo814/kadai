@@ -1,0 +1,104 @@
+
+header{
+    width: 1100px;
+    text-align: center;
+    margin: auto;
+}
+
+main{
+    width: 1100px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+}
+
+.display_top {
+    position: relative;
+    width: 1100px;
+    margin: auto;
+}
+
+.display_middle{
+    position: relative;
+    width: 1100px;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transform: translate(-10px,-40px);
+}
+
+/* ボタン装飾 */
+
+.start{
+    height: 70px;
+    width: 200px;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    border-radius: 5%;
+}
+
+.btn{
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: white;
+    border-radius: 50%;
+    border-width: 7px;
+    box-shadow: 5px 10px 1px rgba(0, 0, 0, 0.9);
+} 
+
+button.btn:hover{
+    background-color:white;
+}
+
+button.btn:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(8px); 
+    transform: translateY(8px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.9);/*影を小さく*/
+    border-bottom: none;
+} 
+
+.record {
+    width: 1100px;
+    position: absolute;
+    border-width: 1px;
+    border-color: gray;
+    transform: translate(275px,-600px);
+}
+
+.medal_control{
+    font-size: 30px;
+    color: red;
+}
+
+footer{
+    background-color: #fff;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+}
+
+p{
+    position: relative;
+    text-align: center;
+    height: 0px;
+    transform: translate(-70px,-470px);
+    font-size: 30px;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+li{
+    list-style-type: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    transform: translate(150px,-180px);
+}
